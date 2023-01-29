@@ -18,6 +18,19 @@ const App = () => {
         setDisplay(display + ' ' + operator + ' ');
     }
 
+    const handleEqual = () => {
+        setDisplay(eval(display))
+    }
+
+    const handleDecimal = () => {
+        const array = display.split(' ');
+        const lastElement = array[array.length - 1];
+
+        if (!lastElement.includes('.')) {
+            setDisplay(display + '.');
+        }
+    }
+
     return (
         <div className='App'>
             <div className="calculator">
@@ -36,8 +49,8 @@ const App = () => {
                 <div id="three" onClick={handleNumber}>3</div>
                 <div id="add" onClick={handleOperator}>+</div>
                 <div id="zero" onClick={handleNumber}>0</div>
-                <div id="decimal" >.</div>
-                <div id="equals" > =</div>
+                <div id="decimal" onClick={handleDecimal} >.</div>
+                <div id="equals" onClick={handleEqual} > =</div>
                 <div id="subtract" onClick={handleOperator}> -</div>
             </div>
         </div>
